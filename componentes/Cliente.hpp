@@ -5,6 +5,7 @@
 #include "../classesAuxiliares/CpfCnpj.hpp"
 #include "UnidadeConsumidora.hpp"
 #include "Endereco.hpp"
+#include "../classesAuxiliares/Permissao.hpp"
 
 class Cliente : public Usuario {
   private:
@@ -12,8 +13,9 @@ class Cliente : public Usuario {
     std::vector<UnidadeConsumidora*> unidadesConsumidorasDoCliente;
     Endereco* enderecoDoCliente;
     bool clienteInadimplente;
+    Permissao* permissaoDoCliente;
   public:
-    Cliente(std::string, CpfCnpj*, UnidadeConsumidora*, Endereco*);
+    Cliente(std::string, CpfCnpj*, UnidadeConsumidora*, Endereco*, Permissao*);
     ~Cliente();
   // Setters
     void definirEstadoDeInadimplenciaDoCliente(bool);
@@ -24,6 +26,7 @@ class Cliente : public Usuario {
     void obterEnderecoCompletoDoCliente() const;
     std::string obterLatitudeDoEnderecoCompletoDoCliente() const;
     std::string obterLongitudeDoEnderecoCompletoDoCliente() const;
+    int obterPermissaoDoCliente() const;
 };
 
 #endif

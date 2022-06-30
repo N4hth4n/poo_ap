@@ -66,7 +66,7 @@ void UnidadeConsumidora::emitirFatura() {
   double valorkWh = 0.35;
   double consumo = this->obterConsumoAcumuladoDeEnergiaAtual() - this->obterConsumoAcumuladoDeEnergiaAnterior();
   double valorDevido = valorkWh * consumo;
-  Fatura* faturaResultante = new Fatura(consumo, valorDevido);
+  Fatura* faturaResultante = new Fatura(consumo, valorDevido, 1);
   this->vincularFaturaUnidadeConsumidora(faturaResultante);
   std::cout << "Fatura no valor de R$ "
     << valorDevido
@@ -77,5 +77,11 @@ void UnidadeConsumidora::emitirFatura() {
 void UnidadeConsumidora::imprimirFaturas() const {
   for (auto faturas : this->faturasDaUnidadeConsumidora) {
     std::cout << "Fatura no valor de R$ " << faturas->obterValorDaFatura() << " encontrada." << std::endl;
+    std::cout << "Data de emissão da fatura: ";
+    faturas->obterDataDeEmissaoDaFatura().printData();
+    std::cout << "Data de vencimento da fatura: ";
+    faturas->obterDataDeVencimentoDaFatura().printData();
+    if(faturas->obterStatusPagamento() == true) std::cout << "Fatura Paga" << std::endl;
+    else std::cout << "Fatura Pendente" << std::endl;
   }
 };

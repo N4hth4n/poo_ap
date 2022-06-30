@@ -1,11 +1,12 @@
 #include "Cliente.hpp"
 
-Cliente::Cliente(std::string nomeAtribuidoAoCliente, CpfCnpj* codigoClienteCadastrado, UnidadeConsumidora* primeiraUnidadeConsumidoraDoCliente, Endereco* enderecoDoCliente) {
+Cliente::Cliente(std::string nomeAtribuidoAoCliente, CpfCnpj* codigoClienteCadastrado, UnidadeConsumidora* primeiraUnidadeConsumidoraDoCliente, Endereco* enderecoDoCliente, Permissao* permissaoDoCliente) {
   definirNomeDoUsuario(nomeAtribuidoAoCliente);
   definirIdDoUsuario();
   this->cadastroPessoaCliente = codigoClienteCadastrado;
   unidadesConsumidorasDoCliente.push_back(primeiraUnidadeConsumidoraDoCliente);
   this->enderecoDoCliente = enderecoDoCliente;
+  this->permissaoDoCliente = permissaoDoCliente;
   std::cout << "Cliente " << obterNomeDoUsuario()
     << ", ID n. "
     << obterIdDoUsuario()
@@ -19,6 +20,10 @@ Cliente::Cliente(std::string nomeAtribuidoAoCliente, CpfCnpj* codigoClienteCadas
     << "Unidade consumidora de código n. "
     << (unidadesConsumidorasDoCliente.at(0))->obterCodigoDaUnidadeConsumidora()
     << " efetivamente vinculada ao cliente."
+    << std::endl
+    << "Permissao de nível "
+    << obterPermissaoDoCliente()
+    << "."
     << std::endl;
 };
 
@@ -63,4 +68,8 @@ std::string Cliente::obterLatitudeDoEnderecoCompletoDoCliente() const {
 
 std::string Cliente::obterLongitudeDoEnderecoCompletoDoCliente() const {
   return this->enderecoDoCliente->obterLongitudeEndereco();
+};
+
+int Cliente::obterPermissaoDoCliente() const {
+  return permissaoDoCliente->obterTipoDePermissaoDoUsuario();
 };

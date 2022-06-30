@@ -16,7 +16,7 @@ class UnidadeConsumidora {
     std::vector<Fatura*> faturasDaUnidadeConsumidora;
     void incrementarTotalDeCodigosDasUnidadesConsumidoras();
     Endereco* enderecoDaUnidadeConsumidora;
-    bool fornecimentoEnergiaLigado = 0;
+    bool fornecimentoEnergia = 0;
   public:
   // Construtor e destrutor
     UnidadeConsumidora(std::string, Endereco*);

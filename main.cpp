@@ -5,7 +5,6 @@
 #include "./componentes/Funcionario.hpp"
 #include "./servicos/Medicao.hpp"
 
-
 int main() {
   /* ------------------ Criando a fornecedora ------------------ */
   Fornecedor* Cemig = Fornecedor::Instanciar();
@@ -20,7 +19,8 @@ int main() {
   CpfCnpj* cadastroTicio = new CpfCnpj("089.898.866-78");
   Endereco* enderecoDoTicio = new Endereco("Rua dos Pica-Paus", "n. 100", "bairro Vila Clóris", "casa", "CEP n. 31744-186", "Belo Horizonte", "MG", "-19.8279329", "-43.9505145"); // O Tício reside na unidade consumidora
   UnidadeConsumidora* unidadeConsumidoraDoTicio = new UnidadeConsumidora("Residencial", enderecoDoTicio);
-  Cliente* Ticio = new Cliente("Tício de Oliveira", cadastroTicio, unidadeConsumidoraDoTicio, enderecoDoTicio);
+  Permissao* permissaoDoTicio = new Permissao(1);
+  Cliente* Ticio = new Cliente("Tício de Oliveira", cadastroTicio, unidadeConsumidoraDoTicio, enderecoDoTicio, permissaoDoTicio);
   Ticio->obterEnderecoCompletoDoCliente();
   Cemig->adicionarClienteListaDeTodosOsClientesDaFornecedora(Ticio);
   
@@ -30,7 +30,8 @@ int main() {
   CpfCnpj* cadastroMevio = new CpfCnpj("146.906.787-07");
   Endereco* enderecoDoMevio = new Endereco("Rua dos Bacuraus", "n. 56-A", "bairro Campo Alegre", "casa", "CEP n. 31730-230", "Belo Horizonte", "MG", "-19.8282189", "-43.9475182"); // O Mévio também reside na unidade consumidora
   UnidadeConsumidora* primeiraUnidadeConsumidoraDoMevio = new UnidadeConsumidora("Residencial", enderecoDoMevio);
-  Cliente* Mevio = new Cliente ("Mévio da Silva", cadastroMevio, primeiraUnidadeConsumidoraDoMevio, enderecoDoMevio);
+  Permissao* permissaoDoMevio = new Permissao(1);
+  Cliente* Mevio = new Cliente ("Mévio da Silva", cadastroMevio, primeiraUnidadeConsumidoraDoMevio, enderecoDoMevio, permissaoDoMevio);
   Mevio->obterEnderecoCompletoDoCliente();
   Cemig->adicionarClienteListaDeTodosOsClientesDaFornecedora(Mevio);
   
@@ -40,7 +41,8 @@ int main() {
   CpfCnpj* cadastroCaioMei = new CpfCnpj("03.778.130/0001-48");
   Endereco* enderecoIndustrialDoCaioMei = new Endereco("Avenida Babita Camargos", "n. 1365", "bairro Industrial", "sem complemento", "CEP n. 31009-121", "Contagem", "MG", "-19.9544376", "-44.0561486");
   UnidadeConsumidora* unidadeConsumidoraDoCaioMei = new UnidadeConsumidora("Industrial", enderecoIndustrialDoCaioMei);
-  Cliente* CaioMei = new Cliente ("Caio MEI", cadastroCaioMei, unidadeConsumidoraDoCaioMei, enderecoIndustrialDoCaioMei);
+  Permissao* permissaoDoCaio = new Permissao(1);
+  Cliente* CaioMei = new Cliente ("Caio MEI", cadastroCaioMei, unidadeConsumidoraDoCaioMei, enderecoIndustrialDoCaioMei, permissaoDoCaio);
   CaioMei->obterEnderecoCompletoDoCliente();
   Cemig->adicionarClienteListaDeTodosOsClientesDaFornecedora(CaioMei);
   
